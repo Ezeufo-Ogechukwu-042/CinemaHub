@@ -4,12 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./Styles/responsive.css";
 import "./Styles/globals.css";
-import { UserProvider } from "./context/UserContext";
-import { MovieProvider } from "./context/MovieContext";
-import { CartProvider } from "./context/CartContext";
-import { WishlistProvider } from "./context/WishlistContext";
-import { SearchProvider } from "./context/SearchContext";
-import { ThemeProvider } from "./context/ThemeContext";
+import { UserProvider } from "./Context/UserContext";
+import { MovieProvider } from "./Context/MovieContext";
+import { CartProvider } from "./Context/CartContext";
+import { WishlistProvider } from "./Context/WishlistContext";
+import { SearchProvider } from "./Context/SearchContext";
+import { ThemeProvider } from "./Context/ThemeContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <UserProvider>
