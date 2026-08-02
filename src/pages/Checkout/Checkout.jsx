@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiCheck, FiCreditCard, FiSmartphone, FiGlobe, FiTruck, FiPackage, FiShield } from 'react-icons/fi';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../Context/CartContext';
 import { formatPrice } from '../../utils/formatters';
 import Button from '../../components/Button/Button';
 import styles from './Checkout.module.css';
+import EmptyState from '../../components/EmptyState/EmptyState';
 
 const steps = [
   { id: 'shipping', label: 'Shipping', icon: FiTruck },
@@ -45,8 +46,7 @@ const Checkout = () => {
   };
 
   if (cart.length === 0 && !completed) {
-    navigate('/cart');
-    return null;
+    return <EmptyState />;
   }
 
   if (completed) {

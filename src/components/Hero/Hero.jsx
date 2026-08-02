@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight, FiPlay, FiShoppingCart, FiStar, FiClock, FiCalendar, FiEye } from 'react-icons/fi';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../Context/CartContext';
 import { formatPrice } from '../../utils/formatters';
 import Badge from '../Badge/Badge';
 import QuickViewModal from '../QuickViewModal/QuickViewModal';
 import styles from './Hero.module.css';
 
-import { useMovieContext } from '../../context/MovieContext';
+import { useMovieContext } from '../../Context/MovieContext';
 import Loader from '../Loader/Loader';
 
 

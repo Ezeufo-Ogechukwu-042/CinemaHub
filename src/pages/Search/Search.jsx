@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import styles from './Search.module.css';
-import { useMovieContext } from "../../context/MovieContext";
+import { useMovieContext } from "../../Context/MovieContext";
 import Loader from '../../components/Loader/Loader';
 
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiX, FiStar, FiShoppingCart, FiHeart, FiPlay, FiClock, FiCalendar, FiGlobe, FiFilm } from 'react-icons/fi';
-import { useCart } from '../../context/CartContext';
-import { useWishlist } from '../../context/WishlistContext';
+import { useCart } from '../../Context/CartContext';
+import { useWishlist } from '../../Context/WishlistContext';
 import { formatPrice } from '../../utils/formatters';
 import Badge from '../Badge/Badge';
 import Rating from '../Rating/Rating';

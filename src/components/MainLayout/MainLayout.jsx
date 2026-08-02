@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../Context/CartContext';
 import Toast from '../../components/Toast/Toast';
 import styles from './MainLayout.module.css';
 
