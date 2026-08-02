@@ -4,8 +4,8 @@ import {
   FiHeart, FiShoppingCart, FiShare2, FiPlay, FiStar, 
   FiClock, FiGlobe, FiCalendar, FiUser, FiCheck, FiX, FiFilm, FiSend 
 } from 'react-icons/fi';
-import { useCart } from '../../context/CartContext';
-import { useWishlist } from '../../context/WishlistContext';
+import { useCart } from '../../Context/CartContext';
+import { useWishlist } from '../../Context/WishlistContext';
 import { formatPrice } from '../../utils/Formatters';
 import { recordRateLimitAttempt } from '../../utils/rateLimit';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';

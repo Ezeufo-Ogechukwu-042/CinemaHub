@@ -6,7 +6,7 @@ import GenreBadge from '../../components/GenreBadge/GenreBadge';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import { useIntersectionObserver } from '../../hooks/UseIntersectionObserver';
 import styles from './Movies.module.css';
-import { useMovieContext } from "../../context/MovieContext";
+import { useMovieContext } from "../../Context/MovieContext";
 import Loader from '../../components/Loader/Loader';
 
 const sortOptions = [

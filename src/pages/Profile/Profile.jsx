@@ -23,7 +23,7 @@ import styles from "./Profile.module.css";
 import Avatar from "../../components/Avatar/Avatar";
 import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 
-import { useWishlist } from "../../context/WishlistContext";
+import { useWishlist } from "../../Context/WishlistContext";
 
 import { authService } from "../../services/authService";
 import { profileService } from "../../services/profileService";
