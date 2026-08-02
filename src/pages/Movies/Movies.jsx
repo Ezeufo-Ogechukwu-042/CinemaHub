@@ -4,9 +4,9 @@ import { FiFilter, FiX, FiCheck, FiRefreshCw, FiGrid, FiList } from 'react-icons
 import MovieCard from '../../components/MovieCard/MovieCard';
 import GenreBadge from '../../components/GenreBadge/GenreBadge';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { useIntersectionObserver } from '../../hooks/UseIntersectionObserver';
 import styles from './Movies.module.css';
-import { useMovieContext } from "../../Context/MovieContext";
+import { useMovieContext } from "../../context/MovieContext";
 import Loader from '../../components/Loader/Loader';
 
 const sortOptions = [

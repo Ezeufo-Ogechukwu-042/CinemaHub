@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHeart, FiEye, FiShoppingCart, FiStar } from 'react-icons/fi';
-import { useCart } from '../../Context/CartContext';
-import { useWishlist } from '../../Context/WishlistContext';
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { formatPrice } from '../../utils/formatters';
+import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
+import { useIntersectionObserver } from '../../hooks/UseIntersectionObserver';
+import { formatPrice } from '../../utils/Formatters';
 import Badge from '../Badge/Badge';
 import QuickViewModal from '../QuickViewModal/QuickViewModal';
 import styles from './MovieCard.module.css';

@@ -23,7 +23,7 @@ import styles from "./Profile.module.css";
 import Avatar from "../../components/Avatar/Avatar";
 import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 
-import { useWishlist } from "../../Context/WishlistContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 import { authService } from "../../services/authService";
 import { profileService } from "../../services/profileService";
@@ -101,14 +101,7 @@ const handleAvatarUpload = async (e) => {
       let userProfile = await profileService.getProfile(currentUser.id);
 
       if (!userProfile) {
-        userProfile = await profileService.createProfile({
-          id: currentUser.id,
-          full_name:
-            currentUser.user_metadata?.full_name || "",
-          avatar:
-            currentUser.user_metadata?.avatar_url || "",
-          role: "user",
-        });
+        userProfile = await profileService.ensureProfile(currentUser);
       }
 
       setProfile(userProfile);

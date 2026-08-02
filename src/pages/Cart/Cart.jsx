@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiArrowLeft, FiTag, FiTrash2 } from 'react-icons/fi';
-import { useCart } from '../../Context/CartContext';
-import { formatPrice } from '../../utils/formatters';
+import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../utils/Formatters';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import Button from '../../components/Button/Button';
 import styles from './Cart.module.css';

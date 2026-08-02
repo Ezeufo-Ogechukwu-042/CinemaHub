@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Toast from "../../components/Toast/Toast";
 
-import { useCart } from "../../Context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 import styles from "./MainLayout.module.css";
 

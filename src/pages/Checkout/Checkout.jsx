@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiCheck, FiCreditCard, FiSmartphone, FiGlobe, FiTruck, FiPackage, FiShield } from 'react-icons/fi';
-import { useCart } from '../../Context/CartContext';
-import { formatPrice } from '../../utils/formatters';
+import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../utils/Formatters';
 import Button from '../../components/Button/Button';
 import styles from './Checkout.module.css';
 import EmptyState from '../../components/EmptyState/EmptyState';

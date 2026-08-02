@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import AdminLayout from "./layouts/AdminLayout/AdminLayout";
 import StaffLayout from "./layouts/StaffLayout/StaffLayout";
-import ScrollToTop from "./components/scrollToTop.jsx/scrollToTop";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import AddMovie from "./pages/Admin/AddMovie";
 
 import Loader from "./components/Loader/Loader";

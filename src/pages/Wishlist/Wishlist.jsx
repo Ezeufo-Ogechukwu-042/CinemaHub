@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useWishlist } from '../../Context/WishlistContext';
+import { useWishlist } from '../../context/WishlistContext';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Button from '../../components/Button/Button';
 import styles from './Wishlist.module.css';
-import { useMovieContext } from "../../Context/MovieContext";
+import { useMovieContext } from "../../context/MovieContext";
 
 
 

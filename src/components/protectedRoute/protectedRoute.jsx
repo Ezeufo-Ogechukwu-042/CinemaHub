@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useUser } from "../../Context/UserContext";
+import { useUser } from "../../context/UserContext";
 import Loader from "../Loader/Loader";
 
 const getUserRole = (profile) => {

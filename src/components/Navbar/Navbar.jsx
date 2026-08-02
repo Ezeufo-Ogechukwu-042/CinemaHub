@@ -6,10 +6,10 @@ import {
   FiPlus, FiPhone, FiInfo, FiShield, FiBriefcase, FiUserPlus, FiLogIn 
 } from 'react-icons/fi';
 import logo from '../../assets/logo.png';
-import { useCart } from '../../Context/CartContext';
-import { useWishlist } from '../../Context/WishlistContext';
-import { useSearch } from '../../Context/SearchContext';
-import { useScroll } from '../../hooks/useScroll';
+import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
+import { useSearch } from '../../context/SearchContext';
+import { useScroll } from '../../hooks/UseScroll';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import styles from './Navbar.module.css';
 

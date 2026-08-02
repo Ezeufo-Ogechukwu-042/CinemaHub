@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiX, FiStar, FiShoppingCart, FiHeart, FiPlay, FiClock, FiCalendar, FiGlobe, FiFilm } from 'react-icons/fi';
-import { useCart } from '../../Context/CartContext';
-import { useWishlist } from '../../Context/WishlistContext';
-import { formatPrice } from '../../utils/formatters';
+import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
+import { formatPrice } from '../../utils/Formatters';
 import Badge from '../Badge/Badge';
 import Rating from '../Rating/Rating';
 import styles from './QuickViewModal.module.css';

@@ -20,7 +20,7 @@ import Badge from "../../components/Badge/Badge";
 import Button from "../../components/Button/Button";
 import Loader from "../../components/Loader/Loader";
 
-import { formatPrice } from "../../utils/formatters";
+import { formatPrice } from "../../utils/Formatters";
 import { adminService } from "../../services/adminService";
 
 const AdminDashboard = () => {

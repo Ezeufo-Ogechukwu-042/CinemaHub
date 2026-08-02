@@ -22,7 +22,6 @@ const NewsLetter = () => {
 
         setSubscribed(true);
         setEmail('');
-        setName('');
     } catch (error) {
         console.log(error);
         alert('Something went wrong.');

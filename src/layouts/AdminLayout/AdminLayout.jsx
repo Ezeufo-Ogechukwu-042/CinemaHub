@@ -5,7 +5,7 @@ import {
   FiSettings, FiLogOut, FiMenu, FiX, FiChevronDown,
   FiShield, FiBell, FiSearch
 } from 'react-icons/fi';
-import { useTheme } from '../../Context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 import ThemeToggle from '../../components/ThemeToggle/ThemeToggle';
 import Avatar from '../../components/Avatar/Avatar';
 import styles from './AdminLayout.module.css';

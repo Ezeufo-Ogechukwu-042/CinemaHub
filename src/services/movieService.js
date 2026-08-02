@@ -131,7 +131,7 @@ export const movieService = {
   async getSimilar(id) {
     const genres = await loadGenres();
 
-    const data = await tmdb.getSimilarMovies();
+    const data = await tmdb.getSimilarMovies(id);
 
     return data.results.map(movie => mapMovie(movie, genres));
   },
