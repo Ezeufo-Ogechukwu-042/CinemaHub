@@ -7,8 +7,7 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import Banner from '../../components/Banner/Banner';
 import NewsLetter from '../../components/NewsLetter/NewsLetter';
 import styles from './Home.module.css';
-
-import { useMovieContext } from '../../context/MovieContext';
+import { useMovieContext } from '../../Context/MovieContext';
 import Loader from '../../components/Loader/Loader';
 
 

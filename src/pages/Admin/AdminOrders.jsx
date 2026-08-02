@@ -8,7 +8,7 @@ import {
 
 import { adminService } from "../../services/adminService";
 
-import { formatPrice } from "../../utils/formatters";
+import { formatPrice } from "../../utils/Formatters";
 
 import Badge from "../../components/Badge/Badge";
 import Loader from "../../components/Loader/Loader";

@@ -15,8 +15,7 @@ import Button from '../../components/Button/Button';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import styles from './MovieDetails.module.css';
-
-import { useMovieContext } from '../../context/MovieContext';
+import { useMovieContext } from '../../Context/MovieContext';
 import { movieService } from "../../services/movieService";
 import Loader from '../../components/Loader/Loader';
 

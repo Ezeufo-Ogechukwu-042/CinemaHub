@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FiPlus, FiSearch, FiEdit2, FiTrash2 } from "react-icons/fi";
-
 import Badge from "../../components/Badge/Badge";
 import Button from "../../components/Button/Button";
 import Loader from "../../components/Loader/Loader";
-import { formatPrice } from "../../utils/formatters";
+import { formatPrice } from "../../utils/Formatters";
 import { Link } from "react-router-dom";
-
 import { adminService } from "../../services/adminService";
-
 import styles from "./AdminDashboard.module.css";
 
 const AdminMovies = () => {
