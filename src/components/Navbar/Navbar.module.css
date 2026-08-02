@@ -18,11 +18,11 @@
 .scrolled {
   --navbar-height: 68px;
   background: rgba(9, 10, 15, 0.88);
-  color: var(--color-secondary);
+  color: var(--color-secondary-dark);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
