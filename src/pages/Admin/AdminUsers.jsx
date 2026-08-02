@@ -7,6 +7,7 @@ import {
 } from "react-icons/fi";
 
 import { adminService } from "../../services/adminService";
+import { normalizeRole } from "../../utils/roleUtils";
 
 import Badge from "../../components/Badge/Badge";
 import Loader from "../../components/Loader/Loader";
@@ -15,10 +16,11 @@ import styles from "./AdminDashboard.module.css";
 
 const AdminUsers = () => {
   const [loading, setLoading] = useState(true);
-
   const [users, setUsers] = useState([]);
-
   const [searchTerm, setSearchTerm] = useState("");
+  const [roleDrafts, setRoleDrafts] = useState({});
+  const [updatingUserId, setUpdatingUserId] = useState(null);
+  const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
     loadUsers();
@@ -48,6 +50,36 @@ const AdminUsers = () => {
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
+
+  const handleRoleChange = (userId, nextRole) => {
+    setRoleDrafts((current) => ({
+      ...current,
+      [userId]: normalizeRole(nextRole),
+    }));
+    setFeedback("");
+  };
+
+  const handleSaveRole = async (user) => {
+    const nextRole = normalizeRole(roleDrafts[user.id] || user.role);
+
+    try {
+      setUpdatingUserId(user.id);
+      await adminService.updateUserRole(user.id, nextRole);
+
+      setUsers((currentUsers) =>
+        currentUsers.map((item) =>
+          item.id === user.id ? { ...item, role: nextRole } : item
+        )
+      );
+
+      setFeedback(`${user.full_name || user.email} is now a ${nextRole}.`);
+    } catch (err) {
+      console.error(err);
+      setFeedback("Unable to update the user's role right now.");
+    } finally {
+      setUpdatingUserId(null);
+    }
+  };
 
   if (loading) {
     return (
@@ -96,6 +128,12 @@ const AdminUsers = () => {
           </div>
 
         </div>
+
+        {feedback && (
+          <div style={{ marginBottom: "16px", color: "var(--success)", fontWeight: 600 }}>
+            {feedback}
+          </div>
+        )}
 
         <div className={styles.tableWrapper}>
 
@@ -197,13 +235,30 @@ const AdminUsers = () => {
 
                     <td>
 
-                      <div className={styles.rowActions}>
+                      <div className={styles.rowActions} style={{ gap: "8px", flexWrap: "wrap" }}>
+                        <select
+                          value={normalizeRole(roleDrafts[user.id] || user.role)}
+                          onChange={(event) => handleRoleChange(user.id, event.target.value)}
+                          style={{
+                            padding: "8px 10px",
+                            borderRadius: "8px",
+                            border: "1px solid var(--border)",
+                            background: "var(--background)",
+                            color: "var(--text)",
+                          }}
+                        >
+                          <option value="user">User</option>
+                          <option value="staff">Staff</option>
+                          <option value="admin">Admin</option>
+                        </select>
 
                         <button
                           className={styles.actionIcon}
-                          title="Edit User"
+                          title="Save Role"
+                          onClick={() => handleSaveRole(user)}
+                          disabled={updatingUserId === user.id}
                         >
-                          <FiEdit2 />
+                          {updatingUserId === user.id ? "Saving..." : "Save"}
                         </button>
 
                         <button

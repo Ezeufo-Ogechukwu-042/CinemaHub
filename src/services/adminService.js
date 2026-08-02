@@ -126,6 +126,19 @@ export const adminService = {
 
   },
 
+  async updateUserRole(userId, role) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ role })
+      .eq("id", userId)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    return data;
+  },
+
    async importMovie(movie) {
 
   // Check if the movie already exists

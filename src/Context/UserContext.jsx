@@ -5,35 +5,92 @@ const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
-
+  const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+    let isMounted = true;
 
-      setUser(user);
+    const loadUserAndProfile = async (sessionUser) => {
+      if (!sessionUser) {
+        if (isMounted) {
+          setUser(null);
+          setProfile(null);
+          setLoading(false);
+        }
+        return;
+      }
 
-      setLoading(false);
-    }
+      if (isMounted) {
+        setLoading(true);
+      }
 
-    loadUser();
+      try {
+        const {
+          data: { user: authUser },
+          error: authError,
+        } = await supabase.auth.getUser();
+
+        if (authError) {
+          throw authError;
+        }
+
+        const activeUser = authUser ?? sessionUser;
+
+        if (!activeUser?.id) {
+          if (isMounted) {
+            setUser(null);
+            setProfile(null);
+            setLoading(false);
+          }
+          return;
+        }
+
+        const { data: profileData, error: profileError } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", activeUser.id)
+          .maybeSingle();
+
+        if (profileError) {
+          throw profileError;
+        }
+
+        if (isMounted) {
+          setUser(activeUser);
+          setProfile(profileData ?? null);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Unable to load authenticated user profile:", error);
+
+        if (isMounted) {
+          setUser(sessionUser ?? null);
+          setProfile(null);
+          setLoading(false);
+        }
+      }
+    };
+
+    loadUserAndProfile(null);
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
+      loadUserAndProfile(session?.user ?? null);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   return (
     <UserContext.Provider
       value={{
         user,
+        profile,
         loading,
       }}
     >
