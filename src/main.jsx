@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 
-import "./styles/responsive.css";
-import "./styles/globals.css";
+import "./Styles/responsive.css";
+import "./Styles/globals.css";
 
 import { UserProvider } from "./context/UserContext";
 import { MovieProvider } from "./context/MovieContext";
