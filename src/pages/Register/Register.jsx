@@ -6,6 +6,7 @@ import { FiUser, FiMail, FiLock, FiEye, FiEyeOff, FiFilm, FiArrowLeft, FiCheck, 
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 import Button from '../../components/Button/Button';
+import { checkRateLimit, clearRateLimit, recordRateLimitAttempt } from '../../utils/rateLimit';
 import styles from './Register.module.css';
 
 const Register = () => {
@@ -56,33 +57,45 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!validate()) return;
+    if (!validate()) return;
 
-  try {
-    setIsSubmitting(true);
+    const emailKey = formData.email.trim().toLowerCase();
+    const rateLimitCheck = checkRateLimit('register', emailKey);
 
-    await supabase.auth.signUp({
-    email: formData.email,
-    password: formData.password,
-    options: {
-      data: {
-        full_name: formData.name,
-      },
-    },
-  });
+    if (!rateLimitCheck.allowed) {
+      setErrors({ general: rateLimitCheck.message });
+      return;
+    }
 
-    alert("Account created! Please check your email to verify your account.");
-    navigate("/login");
-  } catch (err) {
-    setErrors({
-      general: err.message,
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    try {
+      setIsSubmitting(true);
+
+      const { error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.name,
+          },
+        },
+      });
+
+      if (error) throw error;
+
+      clearRateLimit('register', emailKey);
+      alert('Account created! Please check your email to verify your account.');
+      navigate('/login');
+    } catch (err) {
+      const nextAttempt = recordRateLimitAttempt('register', emailKey);
+      setErrors({
+        general: nextAttempt.allowed ? (err?.message || 'We could not create your account right now.') : nextAttempt.message,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className={styles.page}>

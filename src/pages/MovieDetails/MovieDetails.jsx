@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   FiHeart, FiShoppingCart, FiShare2, FiPlay, FiStar, 
-  FiClock, FiGlobe, FiCalendar, FiUser, FiCheck, FiX, FiFilm 
+  FiClock, FiGlobe, FiCalendar, FiUser, FiCheck, FiX, FiFilm, FiSend 
 } from 'react-icons/fi';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { formatPrice } from '../../utils/formatters';
+import { recordRateLimitAttempt } from '../../utils/rateLimit';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Rating from '../../components/Rating/Rating';
 import Badge from '../../components/Badge/Badge';
+import Button from '../../components/Button/Button';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import styles from './MovieDetails.module.css';
@@ -49,6 +51,10 @@ const movie = movies.find(
   const [showTrailer, setShowTrailer] = useState(false);
   const [copiedShare, setCopiedShare] = useState(false);
   const [trailer, setTrailer] = useState(null);
+  const [movieReviews, setMovieReviews] = useState([]);
+  const [reviewForm, setReviewForm] = useState({ name: '', text: '', rating: '5' });
+  const [reviewMessage, setReviewMessage] = useState('');
+  const [isReviewSubmitting, setIsReviewSubmitting] = useState(false);
 
     useEffect(() => {async function loadTrailer() {
     try {
@@ -103,12 +109,44 @@ const movie = movies.find(
   })
   .slice(0, 4);
 
-    const movieReviews = [];
-
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     setCopiedShare(true);
     setTimeout(() => setCopiedShare(false), 2500);
+  };
+
+  const handleReviewSubmit = (event) => {
+    event.preventDefault();
+
+    const name = reviewForm.name.trim();
+    const text = reviewForm.text.trim();
+
+    if (!name || !text) {
+      setReviewMessage('Please add your name and a short review before posting.');
+      return;
+    }
+
+    const reviewIdentifier = `${movie.id}:${name.toLowerCase()}`;
+    const rateLimitCheck = recordRateLimitAttempt('review', reviewIdentifier);
+
+    if (!rateLimitCheck.allowed) {
+      setReviewMessage(rateLimitCheck.message);
+      return;
+    }
+
+    setIsReviewSubmitting(true);
+    const newReview = {
+      id: Date.now(),
+      author: name,
+      rating: Number(reviewForm.rating),
+      comment: text,
+      date: 'Just now',
+    };
+
+    setMovieReviews((prev) => [newReview, ...prev]);
+    setReviewForm({ name: '', text: '', rating: '5' });
+    setReviewMessage('Thanks for sharing your feedback.');
+    setTimeout(() => setIsReviewSubmitting(false), 400);
   };
 
   return (
@@ -270,6 +308,41 @@ const movie = movies.find(
 
             {activeTab === 'reviews' && (
               <div className={styles.reviewsList}>
+                <form className={styles.reviewComposer} onSubmit={handleReviewSubmit}>
+                  <h3>Share your thoughts</h3>
+                  <p className={styles.reviewHint}>Reviews are limited to keep the experience fair and helpful.</p>
+                  {reviewMessage && <p className={styles.reviewMessage}>{reviewMessage}</p>}
+                  <div className={styles.reviewGrid}>
+                    <input
+                      className={styles.reviewInput}
+                      placeholder="Your name"
+                      value={reviewForm.name}
+                      onChange={(event) => setReviewForm({ ...reviewForm, name: event.target.value })}
+                    />
+                    <select
+                      className={styles.reviewSelect}
+                      value={reviewForm.rating}
+                      onChange={(event) => setReviewForm({ ...reviewForm, rating: event.target.value })}
+                    >
+                      <option value="5">5 stars</option>
+                      <option value="4">4 stars</option>
+                      <option value="3">3 stars</option>
+                      <option value="2">2 stars</option>
+                      <option value="1">1 star</option>
+                    </select>
+                  </div>
+                  <textarea
+                    className={styles.reviewTextarea}
+                    rows={4}
+                    placeholder="What stood out to you about this movie?"
+                    value={reviewForm.text}
+                    onChange={(event) => setReviewForm({ ...reviewForm, text: event.target.value })}
+                  />
+                  <Button type="submit" variant="primary" loading={isReviewSubmitting}>
+                    <FiSend /> Post Review
+                  </Button>
+                </form>
+
                 {movieReviews.length > 0 ? (
                   movieReviews.map(review => (
                     <ReviewCard key={review.id} review={review} />

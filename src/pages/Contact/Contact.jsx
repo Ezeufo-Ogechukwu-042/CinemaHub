@@ -3,6 +3,7 @@ import { FiMail, FiMapPin, FiPhone, FiSend, FiMessageSquare } from 'react-icons/
 import Button from '../../components/Button/Button';
 import { contentService } from '../../services/contentService';
 import { staffService } from '../../services/staffService';
+import { checkRateLimit, clearRateLimit, recordRateLimitAttempt } from '../../utils/rateLimit';
 import styles from './Contact.module.css';
 
 const Contact = () => {
@@ -37,6 +38,15 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitError('');
 
+    const emailKey = formData.email.trim().toLowerCase();
+    const rateLimitCheck = checkRateLimit('contact', emailKey || 'anonymous');
+
+    if (!rateLimitCheck.allowed) {
+      setSubmitError(rateLimitCheck.message);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       await staffService.createContactTicket({
         customerName: formData.name,
@@ -45,12 +55,14 @@ const Contact = () => {
         message: formData.message,
       });
 
+      clearRateLimit('contact', emailKey || 'anonymous');
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitted(false), 4000);
     } catch (error) {
       console.error(error);
-      setSubmitError(error?.message || 'Your message could not be sent right now. Please try again.');
+      const nextAttempt = recordRateLimitAttempt('contact', emailKey || 'anonymous');
+      setSubmitError(nextAttempt.allowed ? (error?.message || 'Your message could not be sent right now. Please try again.') : nextAttempt.message);
     } finally {
       setIsSubmitting(false);
     }

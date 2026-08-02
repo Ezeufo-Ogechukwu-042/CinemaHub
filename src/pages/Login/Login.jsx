@@ -6,6 +6,7 @@ import { FiMail, FiLock, FiEye, FiEyeOff, FiFilm, FiArrowLeft, FiCheck } from 'r
 import { FcGoogle } from 'react-icons/fc';
 import { FaApple } from 'react-icons/fa';
 import Button from '../../components/Button/Button';
+import { checkRateLimit, clearRateLimit, recordRateLimitAttempt } from '../../utils/rateLimit';
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -26,26 +27,36 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!validate()) return;
+    if (!validate()) return;
 
-  try {
-    setIsSubmitting(true);
+    const emailKey = formData.email.trim().toLowerCase();
+    const rateLimitCheck = checkRateLimit('login', emailKey);
 
-    await authService.login({
-      email: formData.email,
-      password: formData.password,
-    });
+    if (!rateLimitCheck.allowed) {
+      setErrors({ general: rateLimitCheck.message });
+      return;
+    }
 
-    navigate("/");
-  } catch (err) {
-    setErrors({
-      general: err.message,
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
+    try {
+      setIsSubmitting(true);
+
+      await authService.login({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      clearRateLimit('login', emailKey);
+      navigate('/');
+    } catch (err) {
+      const nextAttempt = recordRateLimitAttempt('login', emailKey);
+      setErrors({
+        general: nextAttempt.allowed ? (err?.message || 'Unable to sign in right now.') : nextAttempt.message,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

@@ -398,6 +398,62 @@
   color: var(--muted);
 }
 
+.reviewComposer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.reviewComposer h3 {
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 1.05rem;
+}
+
+.reviewHint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.reviewMessage {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.reviewGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 12px;
+}
+
+.reviewInput,
+.reviewSelect,
+.reviewTextarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  font: inherit;
+}
+
+.reviewInput::placeholder,
+.reviewTextarea::placeholder {
+  color: var(--muted);
+}
+
+.reviewTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
 .reviewsList {
   display: flex;
   flex-direction: column;

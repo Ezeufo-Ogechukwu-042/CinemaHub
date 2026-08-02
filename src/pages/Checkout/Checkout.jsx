@@ -18,18 +18,30 @@ const Checkout = () => {
   const [step, setStep] = useState('shipping');
   const [completed, setCompleted] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('card');
+  const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
 
   const tax = cartTotal * 0.08;
   const total = cartTotal + tax;
 
   const handleNext = () => {
-    if (step === 'shipping') setStep('payment');
-    else if (step === 'payment') setStep('review');
-    else {
-      setCompleted(true);
-      clearCart();
-      setTimeout(() => navigate('/'), 3000);
+    if (isSubmittingOrder) {
+      return;
     }
+
+    if (step === 'shipping') {
+      setStep('payment');
+      return;
+    }
+
+    if (step === 'payment') {
+      setStep('review');
+      return;
+    }
+
+    setIsSubmittingOrder(true);
+    setCompleted(true);
+    clearCart();
+    setTimeout(() => navigate('/'), 3000);
   };
 
   if (cart.length === 0 && !completed) {
@@ -138,8 +150,8 @@ const Checkout = () => {
               </div>
             )}
 
-            <Button variant="primary" size="large" onClick={handleNext} className={styles.nextBtn}>
-              {step === 'review' ? 'Place Order' : 'Continue'}
+            <Button variant="primary" size="large" onClick={handleNext} className={styles.nextBtn} disabled={isSubmittingOrder}>
+              {isSubmittingOrder ? 'Processing Order...' : step === 'review' ? 'Place Order' : 'Continue'}
             </Button>
           </div>
 
