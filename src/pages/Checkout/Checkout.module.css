@@ -1,0 +1,258 @@
+.page {
+  padding: 24px 0 64px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--muted);
+  transition: var(--transition);
+}
+
+.step.active {
+  background: var(--primary);
+  color: white;
+}
+
+.step.done {
+  background: var(--success);
+  color: white;
+}
+
+.stepIcon {
+  font-size: 1.25rem;
+}
+
+.stepLabel {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+}
+
+@media (max-width: 968px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.section h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .grid2, .grid3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.input:focus {
+  border-color: var(--primary);
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.method {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: var(--background);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.method.active {
+  border-color: var(--primary);
+  background: rgba(229, 9, 20, 0.1);
+}
+
+.cardForm {
+  animation: fadeIn 0.3s ease;
+}
+
+.nextBtn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.sidebar {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.sidebar h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.sidebarItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.sidebarRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  color: var(--muted);
+}
+
+.total {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+  border-top: 2px solid var(--border);
+  margin-top: 8px;
+  padding-top: 16px;
+}
+
+.secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  color: var(--success);
+  font-size: 0.875rem;
+}
+
+.reviewItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.reviewItem img {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.reviewItem h4 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.reviewItem p {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 24px;
+  animation: fadeIn 0.5s ease;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 24px;
+  animation: scaleIn 0.4s ease;
+}
+
+.success h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.success p {
+  color: var(--muted);
+  max-width: 400px;
+}

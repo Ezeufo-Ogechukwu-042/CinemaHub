@@ -1,0 +1,75 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  width: 100%;
+}
+
+.loaderCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.orbital {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.14);
+  display: grid;
+  place-items: center;
+  animation: spin 1s linear infinite;
+}
+
+.core {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 0 22px rgba(255, 145, 0, 0.35);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.small .loaderCard { padding: 12px 16px; gap: 10px; }
+.small .orbital { width: 36px; height: 36px; }
+.small .core { width: 12px; height: 12px; }
+.small .title { font-size: 0.9rem; }
+.small .subtitle { font-size: 0.75rem; }
+
+.medium .loaderCard { padding: 18px 22px; gap: 16px; }
+.large .loaderCard { padding: 24px 28px; gap: 20px; }
+.large .orbital { width: 72px; height: 72px; }
+.large .core { width: 24px; height: 24px; }
+.large .title { font-size: 1.1rem; }
+.large .subtitle { font-size: 0.95rem; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

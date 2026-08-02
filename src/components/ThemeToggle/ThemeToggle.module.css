@@ -1,0 +1,46 @@
+.toggle {
+  width: 48px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  transition: var(--transition);
+}
+
+.toggle:hover {
+  border-color: var(--primary);
+}
+
+.icon {
+  font-size: 14px;
+  color: var(--muted);
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.icon.active {
+  color: var(--accent);
+}
+
+.toggle::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+[data-theme="light"] .toggle::before {
+  transform: translateX(20px);
+}
+

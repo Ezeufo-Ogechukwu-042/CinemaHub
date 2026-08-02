@@ -1,0 +1,31 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--card);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.badge:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.active:hover {
+  color: white;
+  background: var(--secondary);
+}

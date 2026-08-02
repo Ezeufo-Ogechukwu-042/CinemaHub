@@ -1,0 +1,104 @@
+.bannerSection {
+  margin: 80px 0;
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.15) 0%, rgba(16, 18, 26, 0.95) 50%, rgba(9, 10, 15, 1) 100%);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(229, 9, 20, 0.15);
+}
+
+.bgGlow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.badgePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--primary);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 0 25px var(--primary-glow);
+}
+
+.ctaBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 35px var(--primary-glow);
+}
+
+.btnIcon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.ctaBtn:hover .btnIcon {
+  transform: translateX(4px);
+}

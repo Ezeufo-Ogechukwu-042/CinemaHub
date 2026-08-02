@@ -1,0 +1,33 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: var(--border);
+  transition: var(--transition);
+}
+
+.filled {
+  color: var(--accent);
+}
+
+.half {
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+.value {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.small { font-size: 0.875rem; }
+.medium { font-size: 1rem; }
+.large { font-size: 1.25rem; }

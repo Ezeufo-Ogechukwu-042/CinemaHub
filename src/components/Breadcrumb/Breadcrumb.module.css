@@ -1,0 +1,41 @@
+.breadcrumb {
+  padding: 16px 0;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link {
+  color: var(--muted);
+  font-size: 0.875rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+.current {
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.separator {
+  color: var(--muted);
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}

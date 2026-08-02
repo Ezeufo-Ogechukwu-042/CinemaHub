@@ -1,0 +1,55 @@
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px var(--shadow);
+  z-index: 9999;
+  min-width: 300px;
+  animation: slideUp 0.4s ease;
+}
+
+.icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.success .icon { color: var(--success); }
+.error .icon { color: var(--error); }
+
+.message {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.close:hover {
+  color: var(--text);
+  background: var(--card-hover);
+}
+
+@media (max-width: 640px) {
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    min-width: auto;
+  }
+}

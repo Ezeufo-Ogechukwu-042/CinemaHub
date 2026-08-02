@@ -1,0 +1,145 @@
+.page {
+  padding: 24px 0 64px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: var(--card);
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.infoCard h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.infoCard p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.form {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.form h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--primary);
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.success {
+  color: var(--success);
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--error);
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.faq h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faqItem {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faqItem summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqItem p {
+  padding: 0 24px 20px 56px;
+  color: var(--muted);
+  line-height: 1.7;
+}

@@ -1,0 +1,116 @@
+.page {
+  padding-bottom: 64px;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 120px 0 80px;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.story {
+  max-width: 800px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.story h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.story p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.stat {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.statIcon {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.team {
+  text-align: center;
+}
+
+.team h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.member {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  transition: var(--transition);
+}
+
+.member:hover {
+  transform: translateY(-4px);
+}
+
+.member h4 {
+  margin-top: 16px;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.member p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}

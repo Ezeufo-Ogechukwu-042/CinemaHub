@@ -1,0 +1,1444 @@
+/* ==========================================
+   ADMIN DASHBOARD
+   Part 1
+   Layout • Header • Stats • Buttons
+========================================== */
+
+.dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top right,
+      rgba(229, 9, 20, 0.08),
+      transparent 35%),
+    radial-gradient(circle at bottom left,
+      rgba(255,255,255,.03),
+      transparent 45%),
+    var(--background);
+
+  animation: fadeIn .45s ease;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:2rem;
+    margin-bottom:2.5rem;
+    flex-wrap:wrap;
+}
+
+.header h1{
+    font-size:2rem;
+    font-weight:800;
+    color:var(--text);
+    margin-bottom:.35rem;
+    letter-spacing:-.03em;
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:.95rem;
+    max-width:500px;
+    line-height:1.6;
+}
+
+.headerActions{
+    display:flex;
+    gap:.85rem;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+/* ================= STATS ================= */
+
+.statsGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1.5rem;
+    margin-bottom:2.5rem;
+}
+
+/* ================= CARD ================= */
+
+.statCard{
+
+    position:relative;
+    overflow:hidden;
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:20px;
+
+    padding:1.6rem;
+
+    transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+
+}
+
+.statCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    rgba(255,255,255,.05),
+    transparent 45%
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.statCard:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(229,9,20,.35);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.30);
+
+}
+
+.statCard:hover::before{
+
+    opacity:1;
+
+}
+
+/* ================= CARD HEADER ================= */
+
+.statHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:1.5rem;
+
+}
+
+.statIcon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.4rem;
+
+}
+
+/* Netflix inspired colors */
+
+.icon0{
+
+    color:#22c55e;
+
+    background:rgba(34,197,94,.12);
+
+}
+
+.icon1{
+
+    color:#3b82f6;
+
+    background:rgba(59,130,246,.12);
+
+}
+
+.icon2{
+
+    color:#f59e0b;
+
+    background:rgba(245,158,11,.12);
+
+}
+
+.icon3{
+
+    color:#ef4444;
+
+    background:rgba(239,68,68,.12);
+
+}
+
+/* ================= CHANGE BADGE ================= */
+
+.statChange{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.35rem;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.up{
+
+    color:#22c55e;
+
+}
+
+.down{
+
+    color:#ef4444;
+
+}
+
+/* ================= VALUES ================= */
+
+.statValue{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    margin-bottom:.35rem;
+
+    letter-spacing:-.03em;
+
+}
+
+.statLabel{
+
+    color:var(--muted);
+
+    font-size:.92rem;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.headerActions button{
+
+    transition:.25s;
+
+}
+
+.headerActions button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.headerActions a{
+
+    text-decoration:none;
+
+}
+
+/* ================= COMMON CARD ================= */
+
+.card{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    overflow:hidden;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    border-color:rgba(255,255,255,.10);
+
+}
+
+/* ================= SECTION TITLES ================= */
+
+.sectionTitle{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:1.5rem;
+
+}
+
+/* ================= LOADING ================= */
+
+.loading{
+
+    height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.15rem;
+
+    color:var(--muted);
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+.header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.headerActions{
+
+width:100%;
+
+}
+
+.headerActions button{
+
+flex:1;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard{
+
+padding:1.25rem;
+
+}
+
+.header h1{
+
+font-size:1.7rem;
+
+}
+
+.statsGrid{
+
+grid-template-columns:1fr;
+
+}
+
+.statCard{
+
+padding:1.25rem;
+
+}
+
+}
+/* ==========================================
+   PART 2
+   Charts & Top Movies
+========================================== */
+
+.chartsRow{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:1.75rem;
+    margin-bottom:2rem;
+}
+
+.chartCard{
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:20px;
+
+    padding:1.5rem;
+
+    transition:.3s;
+
+}
+
+.chartCard:hover{
+
+    border-color:rgba(255,255,255,.1);
+
+    transform:translateY(-3px);
+
+}
+
+.chartHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:1.75rem;
+
+}
+
+.chartHeader h3{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+}
+
+.chartSelect{
+
+    background:var(--background);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:.55rem .9rem;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.chartSelect:hover{
+
+    border-color:var(--primary);
+
+}
+
+.chartSelect:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   BAR CHART
+========================== */
+
+.chartPlaceholder{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    min-height:260px;
+
+}
+
+.barChart{
+
+    width:100%;
+
+    height:220px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    gap:1rem;
+
+}
+
+.barWrapper{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:.8rem;
+
+}
+
+.bar{
+
+    width:100%;
+
+    max-width:42px;
+
+    border-radius:12px 12px 0 0;
+
+    background:linear-gradient(
+        180deg,
+        #ff4d4d,
+        #e50914
+    );
+
+    min-height:25px;
+
+    animation:growBar 1s ease;
+
+    transition:
+    height .4s ease,
+    transform .25s;
+
+}
+
+.bar:hover{
+
+    transform:scaleY(1.05);
+
+    filter:brightness(1.1);
+
+}
+
+.barWrapper span{
+
+    color:var(--muted);
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   TOP MOVIES
+========================== */
+
+.topMovies{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1rem;
+
+}
+
+.topMovie{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    padding:1rem;
+
+    border-radius:14px;
+
+    transition:.25s;
+
+}
+
+.topMovie:hover{
+
+    background:rgba(255,255,255,.04);
+
+}
+
+.rank{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(229,9,20,.12);
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.topMovieInfo{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.topMovieTitle{
+
+    display:block;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.topMovieMeta{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--muted);
+
+    font-size:.82rem;
+
+}
+
+.topMovieRight{
+
+    text-align:right;
+
+}
+
+.topMovieRevenue{
+
+    display:block;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:4px;
+
+}
+
+.topMovieTrend{
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.topMovieTrend.up{
+
+    color:#22c55e;
+
+}
+
+.topMovieTrend.down{
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes growBar{
+
+    from{
+
+        height:0;
+
+    }
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1100px){
+
+.chartsRow{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.chartHeader{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:1rem;
+
+}
+
+.barChart{
+
+gap:.55rem;
+
+}
+
+.bar{
+
+max-width:28px;
+
+}
+
+.topMovie{
+
+padding:.8rem;
+
+}
+
+.rank{
+
+width:34px;
+
+height:34px;
+
+}
+
+}
+
+/* ==========================================
+   PART 3
+   Tables • Search • Filters • Users
+========================================== */
+
+.tablesRow{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:1.75rem;
+    margin-bottom:2rem;
+}
+
+.tableCard{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.tableCard:hover{
+    border-color:rgba(255,255,255,.10);
+}
+
+.tableHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.35rem 1.5rem;
+    border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+    gap:1rem;
+}
+
+.tableHeader h3{
+    font-size:1.1rem;
+    font-weight:700;
+}
+
+.viewAll{
+    color:var(--primary);
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.viewAll:hover{
+    opacity:.8;
+}
+
+/* ==========================
+   SEARCH + FILTER
+========================== */
+
+.tableActions{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+.searchBox{
+
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+
+    padding:.7rem 1rem;
+
+    border-radius:12px;
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+
+    transition:.25s;
+
+}
+
+.searchBox svg{
+
+    color:var(--muted);
+
+}
+
+.searchBox input{
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:var(--text);
+
+    width:220px;
+
+    font-size:.92rem;
+
+}
+
+.searchBox:focus-within{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(229,9,20,.10);
+
+}
+
+.filterSelect{
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    border-radius:10px;
+
+    padding:.7rem .9rem;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.filterSelect:hover{
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.tableWrapper{
+
+    overflow-x:auto;
+
+}
+
+.table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.table thead{
+
+    background:rgba(255,255,255,.02);
+
+}
+
+.table thead th{
+
+    padding:1rem 1.5rem;
+
+    color:var(--muted);
+
+    text-transform:uppercase;
+
+    font-size:.75rem;
+
+    letter-spacing:.06em;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+}
+
+.table tbody td{
+
+    padding:1rem 1.5rem;
+
+    border-top:1px solid rgba(255,255,255,.04);
+
+    vertical-align:middle;
+
+}
+
+.table tbody tr{
+
+    transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+    background:rgba(255,255,255,.03);
+
+}
+
+.price{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+.muted{
+
+    color:var(--muted);
+
+}
+
+.mono{
+
+    font-family:monospace;
+
+    color:var(--muted);
+
+}
+
+/* ==========================
+   USER CELL
+========================== */
+
+.userCell{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.9rem;
+
+}
+
+.userAvatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #e50914,
+        #ff5050
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+    box-shadow:0 8px 18px rgba(229,9,20,.25);
+
+}
+
+.userName{
+
+    font-weight:700;
+
+}
+
+.userEmail{
+
+    color:var(--muted);
+
+    font-size:.82rem;
+
+    margin-top:2px;
+
+}
+
+/* ==========================
+   BADGES
+========================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.4rem;
+
+    padding:.35rem .7rem;
+
+    border-radius:999px;
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+}
+
+.status.active{
+
+    color:#22c55e;
+
+    background:rgba(34,197,94,.12);
+
+}
+
+.status.pending{
+
+    color:#f59e0b;
+
+    background:rgba(245,158,11,.12);
+
+}
+
+.status.cancelled{
+
+    color:#ef4444;
+
+    background:rgba(239,68,68,.12);
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1200px){
+
+.tablesRow{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.tableHeader{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.tableActions{
+
+width:100%;
+
+}
+
+.searchBox{
+
+width:100%;
+
+}
+
+.searchBox input{
+
+width:100%;
+
+}
+
+.filterSelect{
+
+width:100%;
+
+}
+
+.table thead th,
+
+.table tbody td{
+
+padding:.85rem 1rem;
+
+}
+
+}
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   EMPTY STATES
+========================================== */
+
+.emptyState {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.emptyState svg {
+  width: 60px;
+  height: 60px;
+  color: var(--text-secondary);
+  opacity: .5;
+  margin-bottom: 16px;
+}
+
+.emptyState h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.emptyState p {
+  color: var(--text-secondary);
+}
+
+/* ==========================================
+   PAGINATION
+========================================== */
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.pageBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: .25s;
+}
+
+.pageBtn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.pageBtn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* ==========================================
+   STATUS COLORS
+========================================== */
+
+.success {
+  color: #22c55e;
+}
+
+.warning {
+  color: #f59e0b;
+}
+
+.error {
+  color: #ef4444;
+}
+
+.info {
+  color: #3b82f6;
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.tableWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.15);
+  border-radius: 100px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,.25);
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+    .statsGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .chartsRow{
+        grid-template-columns:1fr;
+    }
+
+    .tablesRow{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .headerActions{
+        width:100%;
+        flex-wrap:wrap;
+    }
+
+    .tableActions{
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .searchBox{
+        width:100%;
+    }
+
+    .searchBox input{
+        width:100%;
+    }
+
+    .filterSelect{
+        width:100%;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .statsGrid{
+        grid-template-columns:1fr;
+    }
+
+    .table thead{
+        display:none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td{
+        display:block;
+        width:100%;
+    }
+
+    .table tr{
+        border-bottom:1px solid var(--border);
+        padding:16px;
+    }
+
+    .table td{
+        border:none;
+        padding:8px 0;
+    }
+
+    .movieCell,
+    .userCell{
+        align-items:flex-start;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .header h1{
+        font-size:1.45rem;
+    }
+
+    .statValue{
+        font-size:1.45rem;
+    }
+
+    .chartCard,
+    .tableCard{
+        border-radius:16px;
+    }
+
+    .chartHeader,
+    .tableHeader{
+        padding:18px;
+    }
+
+    .table tbody td,
+    .table thead th{
+        padding:12px 18px;
+    }
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes floatCard{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-5px);
+    }
+
+}
+
+.statCard:hover,
+.chartCard:hover,
+.tableCard:hover{
+    animation:floatCard .25s forwards;
+}
+
+/* ==========================================
+   GLASS EFFECT
+========================================== */
+
+.chartCard,
+.tableCard,
+.statCard{
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+}
+
+/* ==========================================
+   NICE HOVER EFFECTS
+========================================== */
+
+.table tbody tr{
+    transition:.25s;
+}
+
+.movieThumb{
+    transition:.3s;
+}
+
+.movieThumb:hover{
+    transform:scale(1.08);
+}
+
+.userAvatar{
+    transition:.25s;
+}
+
+.userAvatar:hover{
+    transform:rotate(-8deg) scale(1.08);
+}
+
+.rank{
+    transition:.25s;
+}
+
+.rank:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* ==========================================
+   FINISH
+========================================== */ 
