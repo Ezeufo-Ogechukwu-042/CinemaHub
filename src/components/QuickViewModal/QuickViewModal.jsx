@@ -46,6 +46,7 @@ const QuickViewModal = ({ movie, onClose }) => {
           {/* Media Section */}
           <div className={styles.media}>
             <img
+              style={{objectFit: "contain"}}
               src={posterSrc}
               alt={movie.title}
               className={styles.poster}

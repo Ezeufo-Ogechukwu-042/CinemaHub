@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { FiCheck, FiClock, FiPackage, FiSearch, FiTruck } from 'react-icons/fi';
-import { useCart } from '../../Context/CartContext';
+import { useCart } from '../../context/CartContext';
 import Badge from '../../components/Badge/Badge';
 import Loader from '../../components/Loader/Loader';
 import { staffService } from '../../services/staffService';
