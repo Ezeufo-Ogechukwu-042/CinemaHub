@@ -1,4 +1,5 @@
 import { supabase } from "../supabase/client";
+import { profileService } from "./profileService";
 
 export const authService = {
   async register({ email, password, fullName }) {
@@ -14,6 +15,10 @@ export const authService = {
 
     if (error) throw error;
 
+    if (data?.user) {
+      await profileService.ensureProfile(data.user);
+    }
+
     return data;
   },
 
@@ -24,6 +29,10 @@ export const authService = {
     });
 
     if (error) throw error;
+
+    if (data?.user) {
+      await profileService.ensureProfile(data.user);
+    }
 
     return data;
   },

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
+import { profileService } from "../services/profileService";
 
 const UserContext = createContext();
 
@@ -46,14 +47,26 @@ export function UserProvider({ children }) {
           return;
         }
 
-        const { data: profileData, error: profileError } = await supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", activeUser.id)
-          .maybeSingle();
+        let profileData = null;
 
-        if (profileError) {
-          throw profileError;
+        try {
+          const { data, error } = await supabase
+            .from("profiles")
+            .select("*")
+            .eq("id", activeUser.id)
+            .maybeSingle();
+
+          if (error && error.code !== "PGRST116") {
+            throw error;
+          }
+
+          profileData = data ?? null;
+        } catch (profileError) {
+          console.error("Unable to fetch profile row:", profileError);
+        }
+
+        if (!profileData) {
+          profileData = await profileService.ensureProfile(activeUser);
         }
 
         if (isMounted) {
