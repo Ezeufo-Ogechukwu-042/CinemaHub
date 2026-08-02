@@ -8,7 +8,7 @@ import ScrollToTop from "./components/scrollToTop.jsx/scrollToTop";
 import AddMovie from "./pages/Admin/AddMovie";
 
 import Loader from "./components/Loader/Loader";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 
 // Customer Pages
 const Home = lazy(() => import("./pages/Home/Home"));
