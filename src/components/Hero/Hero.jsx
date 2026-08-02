@@ -7,7 +7,7 @@ import Badge from '../Badge/Badge';
 import QuickViewModal from '../QuickViewModal/QuickViewModal';
 import styles from './Hero.module.css';
 
-import { useMovieContext } from '../../context/MovieContext';
+import { useMovieContext } from '../../Context/MovieContext';
 import Loader from '../Loader/Loader';
 
 
