@@ -14,7 +14,7 @@
   align-items: center;
   gap: 0.75rem;
 
-  color: var(--text-primary);
+  color: white;
 
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 800;

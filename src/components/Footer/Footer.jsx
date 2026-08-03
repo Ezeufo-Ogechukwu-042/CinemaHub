@@ -52,9 +52,9 @@ const Footer = () => {
           <div className={styles.column}>
             <h4>Contact Info</h4>
             <ul className={styles.contactList}>
-              <li><FiMapPin className={styles.contactIcon} /> 12B Allen Avenue, Ikeja, Lagos, Nigeria</li>
-              <li><FiPhone className={styles.contactIcon} /> +234 810 000 0000</li>
-              <li><FiMail className={styles.contactIcon} /> support@cinemahub.ng</li>
+              <li><FiMapPin className={styles.contactIcon} /> 12B Allen Avenue, Enugu, Nigeria</li>
+              <li><FiPhone className={styles.contactIcon} /> +234 8146861093</li>
+              <li><FiMail className={styles.contactIcon} /> cinemahub@gmail.com</li>
             </ul>
           </div>
         </div>
